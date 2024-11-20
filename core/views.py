@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 from .models import Movie
 import os
 
@@ -25,9 +26,11 @@ def dashboard(request):
         query = request.POST.get("query")
         response = requests.get(
             "https://api.themoviedb.org/3/search/movie",
-            params={"api_key": TMDB_API_KEY, "query": query},
+            params={"api_key":  settings.TMDB_API_KEY, "query": query},
         )
+        print(response)
         movies = response.json().get("results", [])
+        print(movies)
         return render(request, "dashboard.html", {"movies": movies})
     return render(request, "dashboard.html")
 
