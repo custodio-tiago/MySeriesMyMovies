@@ -7,6 +7,7 @@ class Movie(models.Model):
     movie_id = models.IntegerField()
     rating = models.FloatField(null=True, blank=True)
     added_at = models.DateTimeField(auto_now_add=True)
+    image_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title} ({self.user.username})"

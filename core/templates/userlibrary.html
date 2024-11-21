@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-      <!-- Navbar -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-left">
             <a href="{% url 'dashboard' %}">MySeriesMyMovies</a>
@@ -17,6 +17,7 @@
             <a href="{% url 'logout' %}">Logout</a>
         </div>
     </nav>
+
     <h2>{{ request.user.username }}'s Library</h2> 
 
     <table>
@@ -29,9 +30,12 @@
         </thead>
         <tbody>
             {% for movie in movies %}
-                <tr>
+                <tr class="movie-item">
                     <td>{{ movie.title }}</td>
                     <td>
+                        <div class="movie-image-container">
+                            <img src="{{ movie.image_url }}" alt="Poster for {{ movie.title }}" class="movie-image">
+                        </div>
                         <form method="post" action="{% url 'update_rating' movie.id %}">
                             {% csrf_token %}
                             <input type="number" name="rating" value="{{ movie.rating }}">

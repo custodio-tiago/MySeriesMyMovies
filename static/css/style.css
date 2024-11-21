@@ -116,6 +116,51 @@ li:hover {
     transform: scale(1.03);
 }
 
+/* Hover no filme - mostra imagem */
+.movie-item {
+    position: relative;
+    background-color: #1c1c1c; /* Cor de fundo */
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    align-items: center; /* Alinha os elementos no centro */
+    justify-content: flex-start; /* Garante que o conteúdo fique à esquerda */
+    padding: 15px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 200px; /* Define uma altura fixa para o item do filme */
+    background-image: url('caminho-da-imagem.jpg'); /* Defina a URL da imagem */
+    background-position: left center; /* Alinha a imagem à esquerda */
+    background-size: cover; /* Cobre a área disponível */
+    background-repeat: no-repeat;
+}
+
+.movie-item:hover {
+    transform: scale(1.03);
+}
+
+.movie-item .movie-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo semitransparente para o texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.movie-item .movie-details h3 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
 /* Links */
 a {
     color: #e50914;

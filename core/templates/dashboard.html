@@ -30,8 +30,13 @@
         <h3>Search Results:</h3>
         <ul>
             {% for movie in movies %}
-                <li>
-                    <strong>{{ movie.title }}</strong>
+                <li class="movie-item">
+                    <div class="movie-info">
+                        <strong>{{ movie.title }}</strong>
+                    </div>
+                    <div class="movie-image-container">
+                        <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="Poster for {{ movie.title }}" class="movie-image">
+                    </div>
                     <form method="post" action="{% url 'add_to_library' movie.id %}">
                         {% csrf_token %}
                         <input type="hidden" name="title" value="{{ movie.title }}">
