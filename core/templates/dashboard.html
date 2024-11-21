@@ -40,12 +40,14 @@
                         <div class="movie-image-container">
                             <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="Poster for {{ movie.title }}" class="movie-image">
                         </div>
+                        
                         <form method="post" action="{% url 'add_to_library' movie.id %}" class="add-to-library-form">
                             {% csrf_token %}
                             <input type="hidden" name="title" value="{{ movie.title }}">
                             <input type="number" name="rating" placeholder="Rating" class="rating-input">
                             <button type="submit" class="button">Add to Library</button>
                         </form>
+                        
                     </li>
                 {% endfor %}
             </ul>

@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #121212;
     color: #fff;
-    margin: 0;
+    margin: 15%;
     padding: 0;
     line-height: 1.6;
 }
@@ -198,3 +198,8 @@ li:hover {
 .delete-btn:hover {
     background-color: #5e2f2f;
 }
+
+.movie-item {
+    margin-bottom: 30px;
+}
+
