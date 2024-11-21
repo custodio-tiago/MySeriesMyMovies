@@ -76,6 +76,9 @@ form button:hover {
     padding: 10px;
     text-align: center;
     transition: transform 0.2s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .movie-item:hover {
@@ -99,9 +102,22 @@ form button:hover {
     transform: scale(1.1);
 }
 
+/* Title Styling */
 .movie-info {
     font-size: 1.1em;
     margin-top: 10px;
+    line-height: 1.2em; /* Line height set to be equal to the height of one line */
+    max-height: 2.4em; /* Maximum height for 2 lines */
+    overflow: hidden; /* Hide overflow */
+    display: -webkit-box; /* Webkit box model for compatibility */
+    -webkit-line-clamp: 2; /* Clamp to 2 lines */
+    -webkit-box-orient: vertical; /* Make the box a vertical flexbox */
+    text-overflow: ellipsis; /* Ellipsis when the text overflows */
+    
+    /* Standard line-clamp property for better compatibility */
+    display: box;
+    line-clamp: 2;
+    box-orient: vertical;
 }
 
 /* Navbar */
