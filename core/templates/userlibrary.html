@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Library</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>{{ request.user.username }}'s Library</h2>
+    <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Movie Title</th>
+                <th>Rating</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies %}
+                <tr>
+                    <td>{{ movie.title }}</td>
+                    <td>
+                        <form method="post" action="{% url 'update_rating' movie.id %}">
+                            {% csrf_token %}
+                            <input type="number" name="rating" value="{{ movie.rating }}">
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" action="{% url 'delete_movie' movie.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

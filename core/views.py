@@ -1,6 +1,6 @@
 import requests
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -26,11 +26,9 @@ def dashboard(request):
         query = request.POST.get("query")
         response = requests.get(
             "https://api.themoviedb.org/3/search/movie",
-            params={"api_key":  settings.TMDB_API_KEY, "query": query},
+            params={"api_key": settings.TMDB_API_KEY, "query": query},
         )
-        print(response)
         movies = response.json().get("results", [])
-        print(movies)
         return render(request, "dashboard.html", {"movies": movies})
     return render(request, "dashboard.html")
 
@@ -40,4 +38,24 @@ def add_to_library(request, movie_id):
         title = request.POST.get("title")
         rating = request.POST.get("rating")
         Movie.objects.create(user=request.user, movie_id=movie_id, title=title, rating=rating)
-    return redirect("dashboard")
+    return redirect("user_library")
+
+@login_required
+def user_library(request):
+    movies = Movie.objects.filter(user=request.user)
+    return render(request, "userlibrary.html", {"movies": movies})
+
+@login_required
+def update_rating(request, movie_id):
+    if request.method == "POST":
+        movie = get_object_or_404(Movie, id=movie_id, user=request.user)
+        movie.rating = request.POST.get("rating")
+        movie.save()
+    return redirect("user_library")
+
+@login_required
+def delete_movie(request, movie_id):
+    if request.method == "POST":
+        movie = get_object_or_404(Movie, id=movie_id, user=request.user)
+        movie.delete()
+    return redirect("user_library")
