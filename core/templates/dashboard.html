@@ -31,9 +31,9 @@
     <div class="corpoprincipal">
         {% if movies %}
             <h3>Search Results:</h3>
-            <ul class="movie-list">
+            <div class="movie-grid">
                 {% for movie in movies %}
-                    <li class="movie-item">
+                    <div class="movie-item">
                         <div class="movie-info">
                             <strong>{{ movie.title }}</strong>
                         </div>
@@ -47,10 +47,9 @@
                             <input type="number" name="rating" placeholder="Rating" class="rating-input">
                             <button type="submit" class="button">Add to Library</button>
                         </form>
-                        
-                    </li>
+                    </div>
                 {% endfor %}
-            </ul>
+            </div>
         {% endif %}
     </div>
 

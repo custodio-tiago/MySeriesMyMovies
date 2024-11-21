@@ -23,42 +23,31 @@
     <h2>{{ request.user.username }}'s Library</h2>
 
     <div class="corpoprincipal">
-        <table class="movie-table">
-            <thead>
-                <tr>
-                    <th>Movie Title</th>
-                    <th>Rating</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for movie in movies %}
-                    <tr class="movie-item">
-                        <td>{{ movie.title }}</td>
-                        <td>
-                            <div class="movie-item-container">
-                                <div class="movie-image-container">
-                                    <img src="{{ movie.image_url }}" alt="Poster for {{ movie.title }}" class="movie-image">
-                                </div>
-                                <div class="movie-rating-container">
-                                    <form method="post" action="{% url 'update_rating' movie.id %}" class="update-rating-form">
-                                        {% csrf_token %}
-                                        <input type="number" name="rating" value="{{ movie.rating }}" class="rating-input">
-                                        <button type="submit" class="button update-btn">Update</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="actions-cell">
-                            <form method="post" action="{% url 'delete_movie' movie.id %}" class="delete-form">
-                                {% csrf_token %}
-                                <button type="submit" class="button delete-btn">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="movie-grid">
+            {% for movie in movies %}
+                <div class="movie-item">
+                    <div class="movie-info">
+                        <strong>{{ movie.title }}</strong>
+                    </div>
+                    <div class="movie-image-container">
+                        <img src="{{ movie.image_url }}" alt="Poster for {{ movie.title }}" class="movie-image">
+                    </div>
+                    <div class="movie-rating-container">
+                        <form method="post" action="{% url 'update_rating' movie.id %}" class="update-rating-form">
+                            {% csrf_token %}
+                            <input type="number" name="rating" value="{{ movie.rating }}" class="rating-input">
+                            <button type="submit" class="button update-btn">Update</button>
+                        </form>
+                    </div>
+                    <div class="actions-cell">
+                        <form method="post" action="{% url 'delete_movie' movie.id %}" class="delete-form">
+                            {% csrf_token %}
+                            <button type="submit" class="button delete-btn">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>

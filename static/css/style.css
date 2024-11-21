@@ -61,59 +61,47 @@ form button:hover {
     transform: scale(1.05);
 }
 
-/* Tables */
-table {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: collapse;
+/* Grid Layout for Movie Items */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.movie-item {
     background-color: #1c1c1c;
     border: 2px solid #e50914;
     border-radius: 10px;
-    overflow: hidden;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-    color: #fff;
-    border-bottom: 1px solid #e50914;
-}
-
-th {
-    background-color: #e50914;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-tr:nth-child(even) {
-    background-color: #2c2c2c;
-}
-
-tr:hover {
-    background-color: #e50914;
-    color: #121212;
-    cursor: pointer;
-}
-
-/* Movie List */
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin: 10px 0;
-    padding: 15px;
-    border: 2px solid #e50914;
-    border-radius: 5px;
-    background-color: #1c1c1c;
+    padding: 10px;
+    text-align: center;
     transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-li:hover {
+.movie-item:hover {
     background-color: #e50914;
     color: #fff;
     transform: scale(1.03);
+}
+
+.movie-image-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.movie-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.movie-image-container:hover .movie-image {
+    transform: scale(1.1);
+}
+
+.movie-info {
+    font-size: 1.1em;
+    margin-top: 10px;
 }
 
 /* Navbar */
@@ -139,31 +127,6 @@ li:hover {
 
 .navbar-right a:hover {
     color: #fff;
-}
-
-/* Movie Item */
-.movie-item-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.movie-image-container {
-    flex: 0 0 120px;
-    margin-right: 20px;
-}
-
-.movie-rating-container,
-.movie-actions-container {
-    display: flex;
-    align-items: center;
-}
-
-.movie-rating-container input {
-    margin-right: 10px;
-    width: 60px;
-    padding: 5px;
 }
 
 /* Button Styles */
@@ -199,7 +162,21 @@ li:hover {
     background-color: #5e2f2f;
 }
 
-.movie-item {
-    margin-bottom: 30px;
+.movie-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
+.movie-rating-container,
+.movie-actions-container {
+    display: flex;
+    align-items: center;
+}
+
+.movie-rating-container input {
+    margin-right: 10px;
+    width: 60px;
+    padding: 5px;
+}
