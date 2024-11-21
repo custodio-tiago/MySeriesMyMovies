@@ -226,30 +226,25 @@ a:hover {
     color: #e50914;
 }
 
-.login-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #1c1c1c;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.login-header {
+/* Alinhamento no User Library */
+.movie-item-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.login-logo {
-    width: 50px;
-    height: 50px;
+.movie-image-container {
+    flex: 0 0 120px; /* Define largura fixa para a imagem */
+    margin-right: 20px;
+}
+
+.movie-rating-container,
+.movie-actions-container {
+    display: flex;
+    align-items: center;
+}
+
+.movie-rating-container form input {
     margin-right: 10px;
-}
-
-.login-header h2 {
-    color: #e50914;
-    font-size: 2em;
-    margin: 0;
 }

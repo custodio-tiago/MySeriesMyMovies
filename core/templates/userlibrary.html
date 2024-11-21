@@ -20,6 +20,7 @@
 
     <h2>{{ request.user.username }}'s Library</h2> 
 
+    <div class="corpoprincipal">
     <table>
         <thead>
             <tr>
@@ -33,24 +34,29 @@
                 <tr class="movie-item">
                     <td>{{ movie.title }}</td>
                     <td>
-                        <div class="movie-image-container">
-                            <img src="{{ movie.image_url }}" alt="Poster for {{ movie.title }}" class="movie-image">
+                        <div class="movie-item-container">
+                            <div class="movie-image-container">
+                                <img src="{{ movie.image_url }}" alt="Poster for {{ movie.title }}" class="movie-image">
+                            </div>
+                            <div class="movie-rating-container">
+                                <form method="post" action="{% url 'update_rating' movie.id %}">
+                                    {% csrf_token %}
+                                    <input type="number" name="rating" value="{{ movie.rating }}">
+                                    <button type="submit">Update</button>
+                                </form>
+                            </div>
+                            <div class="movie-actions-container">
+                                <form method="post" action="{% url 'delete_movie' movie.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
                         </div>
-                        <form method="post" action="{% url 'update_rating' movie.id %}">
-                            {% csrf_token %}
-                            <input type="number" name="rating" value="{{ movie.rating }}">
-                            <button type="submit">Update</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="post" action="{% url 'delete_movie' movie.id %}">
-                            {% csrf_token %}
-                            <button type="submit">Delete</button>
-                        </form>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+    </div>
 </body>
 </html>
