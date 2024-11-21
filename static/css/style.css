@@ -153,3 +153,58 @@ a:hover {
     padding: 20px; /* Espaço interno */
     background-color: #121212; /* Preto de fundo */
 }
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #121212;
+    border-bottom: 2px solid #e50914;
+}
+
+.navbar-left a {
+    color: #e50914;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-right a {
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.navbar-right a:hover {
+    color: #e50914;
+}
+
+.login-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.login-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.login-header h2 {
+    color: #e50914;
+    font-size: 2em;
+    margin: 0;
+}

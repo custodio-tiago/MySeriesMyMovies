@@ -8,4 +8,6 @@ urlpatterns = [
     path("library/", views.user_library, name="user_library"),
     path("update/<int:movie_id>/", views.update_rating, name="update_rating"),
     path("delete/<int:movie_id>/", views.delete_movie, name="delete_movie"),
+    path('logout/', views.user_logout, name='logout'),  
+    path('userlibrary/', views.user_library, name='userlibrary'),
 ]

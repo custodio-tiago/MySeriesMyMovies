@@ -6,11 +6,16 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" class="login-logo">
+            <h2>Login - MySeriesMyMovies</h2>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 </html>

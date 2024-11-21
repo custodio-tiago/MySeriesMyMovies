@@ -6,6 +6,17 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+      <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="{% url 'dashboard' %}">MySeriesMyMovies</a>
+        </div>
+        <div class="navbar-right">
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+            <a href="{% url 'userlibrary' %}">Library</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </nav>
     <h2>{{ request.user.username }}'s Library</h2>
     <a href="{% url 'dashboard' %}">Back to Dashboard</a>
 

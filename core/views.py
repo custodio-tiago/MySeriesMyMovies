@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
 from django.conf import settings
 from .models import Movie
 import os
@@ -59,3 +61,8 @@ def delete_movie(request, movie_id):
         movie = get_object_or_404(Movie, id=movie_id, user=request.user)
         movie.delete()
     return redirect("user_library")
+
+# Função de logout
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/login/')  # Redireciona para a página de login
