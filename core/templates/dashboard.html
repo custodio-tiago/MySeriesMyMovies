@@ -1,12 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-       <!-- Navbar -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-left">
             <a href="{% url 'dashboard' %}">MySeriesMyMovies</a>
@@ -19,34 +21,35 @@
     </nav>
     
     <h2>Welcome, {{ request.user.username }}</h2>
-    <form method="post">
+    
+    <form method="post" class="search-form">
         {% csrf_token %}
-        <input type="text" name="query" placeholder="Search for movies...">
-        <button type="submit">Search</button>
+        <input type="text" name="query" placeholder="Search for movies..." class="search-input">
+        <button type="submit" class="search-button">Search</button>
     </form>
 
     <div class="corpoprincipal">
-    {% if movies %}
-        <h3>Search Results:</h3>
-        <ul>
-            {% for movie in movies %}
-                <li class="movie-item">
-                    <div class="movie-info">
-                        <strong>{{ movie.title }}</strong>
-                    </div>
-                    <div class="movie-image-container">
-                        <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="Poster for {{ movie.title }}" class="movie-image">
-                    </div>
-                    <form method="post" action="{% url 'add_to_library' movie.id %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="title" value="{{ movie.title }}">
-                        <input type="number" name="rating" placeholder="Rating">
-                        <button type="submit">Add to Library</button>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+        {% if movies %}
+            <h3>Search Results:</h3>
+            <ul class="movie-list">
+                {% for movie in movies %}
+                    <li class="movie-item">
+                        <div class="movie-info">
+                            <strong>{{ movie.title }}</strong>
+                        </div>
+                        <div class="movie-image-container">
+                            <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="Poster for {{ movie.title }}" class="movie-image">
+                        </div>
+                        <form method="post" action="{% url 'add_to_library' movie.id %}" class="add-to-library-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="title" value="{{ movie.title }}">
+                            <input type="number" name="rating" placeholder="Rating" class="rating-input">
+                            <button type="submit" class="button">Add to Library</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 
 </body>
