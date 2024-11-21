@@ -1,5 +1,5 @@
 # MySeriesMyMovies
-Aplicação Django para avaliação de filmes e séries
+Aplicação Django para avaliação de filmes e séries. Usa a API do The Movie Database, templates Django, sistema de login, logout e SQLite.
   
 ![image](https://github.com/user-attachments/assets/4dd5eb8b-c403-4465-b9e9-cc29812487ec)
 
